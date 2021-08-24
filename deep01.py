@@ -22,7 +22,7 @@ from tensorflow.keras.layers import Dense; # dense는 밀도를?
 
 model = Sequential();
 model.add(Dense(units=1, activation='linear', input_dim=1));
-model.compile(optimizer='adam',loss='mse', metrics=['mae']);
+model.compile(optimizer='adam', loss='mse', metrics=['mae']);
 model.fit(x_train, y_train, epochs=3000, verbose=1);
 
 x_data = [8, 9, 10, -1, 4, -15];
