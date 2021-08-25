@@ -9,4 +9,6 @@
 ![boston_model](boston_model.png)
 
 * [mnist](./mnist.ipynb)
+* [fashionmnist](./fashmnist.ipynb)
+* [titanic](./titanic.ipynb)
 
