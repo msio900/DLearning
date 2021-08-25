@@ -8,5 +8,5 @@
 
 ![boston_model](../kdigital_develop_intelligent_service/0824/boston_model-16297894840341.png)
 
-* 
+* [mnist](./mnist.ipynb)
 
