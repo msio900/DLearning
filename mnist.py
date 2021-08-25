@@ -88,6 +88,7 @@ model.compile(optimizer='adam',
               metrics=['acc']);
 model.fit(x_train_scaler, y_train_cate,
           epochs=30,
+          batch_size=128, # 데이터를 128개 씩 나누어 메모리에 올리고 처리
           validation_data=(x_vali_scaler, y_vali_cate),
           verbose=1);
 print(model.evaluate(x_test_scaler, y_test_cate))
@@ -95,10 +96,14 @@ print(model.evaluate(x_test_scaler, y_test_cate))
 # with open("mnist.model", "wb") as w:
 #     pickle.dump(model, w);
 
-result = model.predict(x_test_scaler);
-print(result.shape)
-print(result[0])
+model.save("mnist.h5")
 
-plt.imshow(x_test[0].reshape(28,28))
-plt.title(str(result[0]))
-plt.show()
+
+#
+# result = model.predict(x_test_scaler);
+# print(result.shape)
+# print(result[0])
+#
+# plt.imshow(x_test[0].reshape(28,28))
+# plt.title(str(result[0]))
+# plt.show()
