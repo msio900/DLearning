@@ -1,8 +1,11 @@
+import pickle
+
 import pandas as pd;
 import numpy as np;
 import tensorflow as tf;
 import os
 
+from matplotlib import pyplot as plt
 from tensorflow.python.keras.utils.np_utils import to_categorical
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' # 텐서플로를 사용하면서 에러를 잡아주기 위한...
@@ -75,7 +78,8 @@ from tensorflow.keras.layers import Dense;
 
 model = Sequential();
 # 784개 들어와서 10개가 나감.
-model.add(Dense(64, activation='relu', input_shape=(784, )))
+model.add(Dense(128, activation='relu', input_shape=(784, )))
+model.add(Dense(64, activation='relu'))
 model.add(Dense(32, activation='relu'))
 model.add(Dense(10, activation='softmax')) # 다중분류라서...softmax
 
@@ -84,4 +88,17 @@ model.compile(optimizer='adam',
               metrics=['acc']);
 model.fit(x_train_scaler, y_train_cate,
           epochs=30,
-          validation_data=(x_vali_scaler, y_vali_cate));
+          validation_data=(x_vali_scaler, y_vali_cate),
+          verbose=1);
+print(model.evaluate(x_test_scaler, y_test_cate))
+
+# with open("mnist.model", "wb") as w:
+#     pickle.dump(model, w);
+
+result = model.predict(x_test_scaler);
+print(result.shape)
+print(result[0])
+
+plt.imshow(x_test[0].reshape(28,28))
+plt.title(str(result[0]))
+plt.show()
