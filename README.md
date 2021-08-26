@@ -12,3 +12,6 @@
 * [fashionmnist](./fashmnist.ipynb)
 * [titanic](./titanic.ipynb)
 
+* [imageDL](./p121.ipynb)
+* 
+
